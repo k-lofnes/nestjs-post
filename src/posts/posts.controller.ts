@@ -10,7 +10,7 @@ import {
   HttpStatus,
 } from "@nestjs/common";
 import { ApiTags, ApiOperation, ApiResponse, ApiParam } from "@nestjs/swagger";
-import type { PostsService } from "./posts.service";
+import { PostsService } from "./posts.service";
 import type { CreatePostDto } from "./dto/create-post.dto";
 import type { UpdatePostDto } from "./dto/update-post.dto";
 import { Post as PostEntity } from "./entities/post.entity";
