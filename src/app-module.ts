@@ -27,7 +27,6 @@ import { Post } from "./posts/entities/post.entity";
       inject: [ConfigService],
       useFactory: (configService: ConfigService) => {
         const url = configService.get("POSTGRES_URL");
-        console.log("POSTGRES_URL from config:", url); // Debug log
         return {
           type: "postgres",
           url,
