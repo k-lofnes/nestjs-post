@@ -1,11 +1,24 @@
 import { NestFactory } from "@nestjs/core";
-import { ValidationPipe } from "@nestjs/common";
 import { AppModule } from "./app.module";
+import { ValidationPipe } from "@nestjs/common";
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.useGlobalPipes(new ValidationPipe());
-  await app.listen(3000);
-  console.log("Application is running on: http://localhost:3000");
+  app.enableCors();
+
+  // For local development
+  if (process.env.NODE_ENV !== "production") {
+    await app.listen(3000);
+  }
+
+  return app;
 }
-bootstrap();
+
+// For local development
+if (process.env.NODE_ENV !== "production") {
+  bootstrap();
+}
+
+// For Vercel serverless deployment
+export default bootstrap;
