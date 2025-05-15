@@ -1,18 +1,30 @@
-import { IsString, IsBoolean, IsOptional, IsNotEmpty } from "class-validator";
+import { IsNotEmpty, IsString, MinLength } from "class-validator";
+import { ApiProperty } from "@nestjs/swagger";
 
 export class CreatePostDto {
-  @IsString()
+  @ApiProperty({
+    description: "The title of the post",
+    example: "My First Blog Post",
+  })
   @IsNotEmpty()
+  @IsString()
+  @MinLength(3)
   title: string;
 
-  @IsString()
+  @ApiProperty({
+    description: "The content of the post",
+    example: "This is the content of my first blog post.",
+  })
   @IsNotEmpty()
+  @IsString()
+  @MinLength(10)
   content: string;
 
-  @IsBoolean()
-  @IsOptional()
-  published?: boolean;
-
-  @IsOptional()
-  authorId?: number;
+  @ApiProperty({
+    description: "The author of the post",
+    example: "John Doe",
+  })
+  @IsNotEmpty()
+  @IsString()
+  author: string;
 }

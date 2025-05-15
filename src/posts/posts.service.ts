@@ -1,9 +1,9 @@
 import { Injectable, NotFoundException } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
-import { Post } from "./post.entity";
 import { CreatePostDto } from "./dto/create-post.dto";
 import { UpdatePostDto } from "./dto/update-post.dto";
+import { Post } from "./entities/post.entity";
 
 @Injectable()
 export class PostsService {
@@ -40,3 +40,4 @@ export class PostsService {
     await this.postsRepository.remove(post);
   }
 }
+
