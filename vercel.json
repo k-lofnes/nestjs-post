@@ -16,11 +16,5 @@
       "src": "/api/(.*)",
       "dest": "src/main.ts"
     }
-  ],
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/api"
-    }
   ]
 }
